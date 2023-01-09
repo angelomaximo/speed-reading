@@ -1,0 +1,19 @@
+body {
+    background-color: #191919;
+    color: #FFF;
+    padding: 36px;
+}
+
+.output {
+    font-size: 16px;
+    padding: 0px 300px;
+}
+
+.block {
+    color: gray;
+    font-size: 30px;
+}
+
+#input {
+    height: 300px;
+}
