@@ -87,7 +87,6 @@ const abbreviation = {
   'companies': 'com·ies',
   'corporate': 'corp·',
   'accommodation': 'accomm·',
-  'delete': 'del·',
   'adjective': 'adj·',
   'contamination': 'contam·',
   'experience': '·xp·',
@@ -208,9 +207,6 @@ const abbreviation = {
   'financing': 'fin·ng',
   'financial': 'fin·ial',
   'foundation': 'foun·tion',
-  'function': 'func·',
-  'functional': 'func·al',
-  'functionality': 'func·ity',
   'general': 'gen·',
   'global': 'glob·',
   'government': 'gov·',
@@ -219,9 +215,9 @@ const abbreviation = {
   'incorporated' : 'inc·',
   'information': 'info·',
   'injury': 'inj·',
-  'index': 'ind·',
   'industry': 'indus·',
   'interest': 'int·st',
+  'integer': 'int·',
   'invest': 'inv·',
   'investment': 'inv·nt',
   'investor': 'inv·tor',
@@ -231,7 +227,6 @@ const abbreviation = {
   'liability': 'liab·',
   'limited': 'l·t·d',
   'litigation': 'litig·',
-  'large': 'l·g·',
   'machine': 'mach·',
   'machines': 'mach·s',
   'maintenance': 'maint·',
@@ -246,12 +241,9 @@ const abbreviation = {
   'merchant': 'merch·',
   'mortgage': 'mortg·',
   'mutual': 'mut·',
-  'minute': 'minu·',
-  'minutes': 'minu·s',
-  'medium': 'm·d·',
   'national': 'natio·',
   'natural': 'nat·',
-  //'number': 'num·',
+  'number': 'num·',
   'official': 'off·',
   'opinion': 'opi·',
   'order': 'ord·',
@@ -303,11 +295,6 @@ const abbreviation = {
   'street': 'st·',
   'system': 'sys·',
   'systems': 'sys·s',
-  'second': 'sec·',
-  'seconds': 'sec·s',
-  'small': 'sm·',
-  'millisecond': 'millisec·',
-  'milliseconds': 'millisec·s',
   'teacher': 't·ch·r',
   'teachers': 't·ch·rs',
   'telephone': 'tel·',
@@ -332,15 +319,9 @@ const symbol = {
   'intersection': '⋂',
   'union': '⋃',
   'difference': '∖',
-  'different': '∖nt',
-  'exist': '∃',
-  'integer': 'ℤ',
-  'number': '#', //When # prefixes a number, it is read as "number". A "#2 pencil", for example, indicates "a number-two pencil". The abbreviations 'No.' and '№' are used commonly and interchangeably.
-  'numbers': '#s',
-
-
-  'response': '℟',
+  'exist': '∃'
 }
+
 const number = {
   'two': '2',
   'three': '3',
@@ -392,14 +373,14 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
     
   const text = input.value;
-  output.innerHTML = text;
+  output.innerHTML = formatting( text );
   output2.innerHTML = formatting( blocking(text.split(" ")) );
 })
 
 function formatting(text) {
   //Split text into words inside an array.
   const words = text.split(" ");
-  words.unshift('<span id="phrase">')
+  words.unshift('<span class="phrase">')
 
   for (let word of words) {
     // (!)You have to make it ignore the comma and period
@@ -408,31 +389,14 @@ function formatting(text) {
     if(number.hasOwnProperty(word)) words[words.indexOf(word)] = number[word];
     if(symbol.hasOwnProperty(word)) words[words.indexOf(word)] = `<span class="text-primary">${symbol[word]}</span>`;
 
-    for(let char of word) {
-      if(char == '.') words[words.indexOf(word)] = `${word}</span><br><span id="phrase">`;
-    }
-
   }
   return words.join(" ");
 }
 
-function blocking(arr) {
-  let strArr = [];
 
-  for(let i = 0; i < arr.length; i += 2) {
-    strArr.push('<span class="block">[</span>', arr[i])
-    strArr.push(arr[i + 1], '<span class="block">] </span>');
-  }
-
-  return strArr.join(" ");
-}
-
-// Split text into words inside an array.
-// If word inside array match with icon, then 
- //arr[index] = matched icon
-
-function autoPageScroll() {
-  //incrementing by x every y milliseconds
-  window.scrollBy(0,300 /*x*/); 
-  scrolldelay = setTimeout(autoPageScroll,20000 /*y*/);
-}
+// phrase frequency \\
+ // pick 2 words in array => that I must
+  // glue them
+  // push newArr with [gluedWords, index]
+  // index += 1
+// I can find a word that substitute that or transform into acronym

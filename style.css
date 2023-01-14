@@ -17,3 +17,32 @@ body {
 #input {
     height: 300px;
 }
+
+.icon {
+    height: 26px;
+    width: auto;
+}
+
+.output span {
+    padding: 0px, 20px;
+}
+
+#phrase {
+    background-color: #FFF;
+    color: #000;
+    padding: 16px;
+    border-radius: 16px;
+
+    display: block;
+}
+
+.scrollBtn {
+    position: fixed;
+    bottom: 26px;
+    padding: 8px 26px;
+}
+
+/* .highlight {
+    background-color: #ffff9d!important;
+    display: none;
+} */
