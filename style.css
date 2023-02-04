@@ -16,6 +16,14 @@ body {
 
 #input {
     height: 300px;
+    width: 100%;
+    padding: 16px;
+    color: #FFF;
+    background-color: inherit;
+    border: none;
+    border-radius: none;
+    border-bottom: 2px solid #333;
+    border-top: 2px solid #333;
 }
 
 .icon {
@@ -31,18 +39,98 @@ body {
     background-color: #FFF;
     color: #000;
     padding: 16px;
-    border-radius: 16px;
-
+    border-radius: 4px;
     display: block;
 }
+
+.col {
+  display: flex;
+  gap: 16px;
+}
+
+
 
 .scrollBtn {
     position: fixed;
     bottom: 26px;
-    padding: 8px 26px;
+    padding: 16px;
+    border-radius: 50%;
+    border: 2px dotted;
 }
 
-/* .highlight {
-    background-color: #ffff9d!important;
+.scrollBtn:hover {
+    border: 2px solid;
+}
+
+.btn-aqua {
+    background-color:#3ebfbb;
+}
+.btn-aqua:hover {
+    background-color: #3ab2ae;
+}
+
+
+/* TIP */
+.tip {
+    position: relative; /* making the .tooltip span a container for the tooltip text */
+}
+.tip:hover {
+    background-color: #dcecf4;
+}
+.tip:before {
+    content: attr(data-text); /* here's the magic */
+    position: absolute;
+    /* vertically center */
+    top: 50%;
+    transform: translateY(-50%);
+    /* move to right */
+    left: 100%;
+    margin-left: 15px;/* and add a small left margin */
+    /* basic styles */
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+
+    display: none;/* hide by default */
+}
+.tip:hover:before {
+    display: block;
+}
+.tip:after {
+    content: "";
+    position: absolute;
+
+    /* position tooltip correctly */
+    left: 100%;
+    margin-left: -5px;
+    /* vertically center */
+    top: 50%;
+    transform: translateY(-50%);
+    /* the arrow */
+    border: 10px solid #000;
+    border-color: transparent black transparent transparent;
+
     display: none;
-} */
+}
+.tip:hover:before, .tip:hover:after {
+    display: block;
+}
+
+
+
+/* SCROLLBAR */
+::-webkit-scrollbar {/* width */
+    width: 10px;
+}
+::-webkit-scrollbar-track {/* track */
+    background: #191919;
+}
+::-webkit-scrollbar-thumb {/* handle */
+    background: #474c50;
+}
+::-webkit-scrollbar-thumb:hover {/* handle on hover */
+    background: #555;
+}
